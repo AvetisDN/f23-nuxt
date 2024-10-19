@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Montserrat", system-ui;
+}
+
+@layer components {
+  .nav-link {
+    @apply flex items-center gap-1 py-2 px-4 rounded-lg hover:bg-emerald-500 dark:hover:bg-emerald-600 dark:hover:text-zinc-100 transition-colors font-medium;
+  }
+  .nav-link.router-link-exact-active {
+    @apply bg-emerald-500 dark:bg-emerald-600 dark:text-zinc-100;
+  }
+  h1 {
+    @apply text-4xl font-extrabold text-emerald-700 dark:text-emerald-300;
+  }
+
+  .page {
+    @apply py-5;
+    .wrapper {
+      @apply mx-auto container p-5 bg-zinc-100 dark:bg-zinc-900 rounded;
+    }
+  }
+
+  .page-register {
+    .wrapper {
+      @apply max-w-[450px];
+    }
+  }
+
+  /* forms */
+
+  .btn {
+    @apply bg-emerald-600 text-emerald-50 py-3 px-5 rounded-lg transition hover:bg-green-600 font-semibold disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-red-50 hover:bg-rose-600;
+  }
+  .btn-sm {
+    @apply py-2 px-3;
+  }
+
+  .form-container {
+    @apply flex flex-col gap-8;
+  }
+  .form {
+  }
+  .form-header {
+    h2 {
+      @apply text-3xl font-black text-center;
+    }
+  }
+  .form-wrapper {
+    @apply flex flex-col gap-6;
+  }
+  .form-footer {
+    @apply flex flex-col;
+  }
+  .form-control {
+    @apply flex gap-4 items-center;
+    label {
+      @apply w-20 font-semibold;
+    }
+  }
+  .form-input {
+    @apply grow py-2 px-4 rounded transition-all ring-4 ring-zinc-200 focus:ring-emerald-500 outline-none bg-zinc-50 dark:ring-zinc-800 dark:bg-zinc-950 dark:focus:ring-emerald-600;
+  }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+.page-enter-from {
+  position: absolute;
+  translate: 200px 0;
+}
+.page-leave-to {
+  position: absolute;
+  translate: -200px 0;
+}
+body:has(*[class*="page-enter"]) {
+  overflow: hidden;
+}
