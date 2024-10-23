@@ -1,6 +1,6 @@
 <template>
   <header
-    class="bg-emerald-600 text-gray-50 dark:bg-zinc-900 dark:text-emerald-400 p-4 lg:p-5 !py-4 sticky top-0"
+    class="bg-emerald-600 text-gray-50 dark:bg-zinc-900 dark:text-emerald-400 p-4 lg:p-5 !py-4 sticky top-0 z-50"
   >
     <div class="container mx-auto flex gap-4 items-center">
       <HeaderLogo />
