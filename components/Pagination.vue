@@ -1,5 +1,4 @@
 <template>
-  {{ pagination }}
   <div class="pagination">
     <button
       @click="handleClick(`/?page=${getPagination(pagination).prev}`)"
@@ -9,6 +8,7 @@
     </button>
     <button
       class="pagination-link"
+      :class="{ active: pagination.page === n }"
       v-for="n in pagination.pageCount"
       @click="handleClick(`/?page=${n}`)"
     >
@@ -36,12 +36,9 @@ const getPagination = (pagination) => {
   return { prev, next };
 };
 
-const router = useRouter();
-
 const handleClick = (path) => {
-  console.log(path);
-
-  router.push(path);
+  navigateTo(path);
+  refreshNuxtData();
 };
 </script>
 

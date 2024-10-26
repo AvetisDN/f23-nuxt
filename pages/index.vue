@@ -11,8 +11,12 @@
           </div>
           <Pagination :pagination="data?.pageInfo" />
         </div>
-        <div class="min-w-[300px] -order-1 md:order-1 sticky top-20">
-          <h3>Create new post</h3>
+        <div
+          v-if="user"
+          class="min-w-[300px] w-full -order-1 md:order-1 sticky top-16 md:w-[300px] bg-zinc-100 dark:bg-zinc-900 py-4"
+        >
+          <!-- <h3 class="mb-6">Create new post</h3> -->
+          <HomepageCreatePost />
         </div>
       </div>
     </div>
@@ -32,7 +36,7 @@ const isLoading = ref(false);
 const fetchPosts = async (page) => {
   const postsQuery = {
     query: `
-      query Posts($page: Int, $pageSize: Int) {
+      query($page: Int, $pageSize: Int) {
         posts_connection(pagination: {page: $page, pageSize: $pageSize}, sort: "updatedAt:desc") {
           nodes {
             caption
@@ -40,6 +44,7 @@ const fetchPosts = async (page) => {
             updatedAt
             photo {
               url
+              formats
             }
             user {
               username
