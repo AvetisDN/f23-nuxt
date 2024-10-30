@@ -13,7 +13,7 @@
       class="rounded h-[250px] object-cover"
     />
     <div class="flex gap-2 text-sm items-center justify-between">
-      <p>{{ getDateTime(post) }}</p>
+      <p>{{ getDateTime(post.updatedAt) }}</p>
       <div class="flex gap-1 items-center text-xs">
         <ChatBubbleBottomCenterTextIcon class="h-5" />
         <span>5</span>
@@ -34,22 +34,12 @@
 
 <script setup>
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/vue/24/solid";
-import moment from "moment";
 
 const props = defineProps(["post"]);
-
-console.log(props.post);
 
 const {
   public: { strapiURL },
 } = useRuntimeConfig();
-
-const getDateTime = (post) => {
-  if (moment().isSame(moment(post.updatedAt), "d")) {
-    return moment(post.updatedAt).fromNow();
-  }
-  return moment(post.updatedAt).format("DD.MM.YYYY");
-};
 </script>
 
 <style></style>
